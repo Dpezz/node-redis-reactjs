@@ -1,0 +1,22 @@
+{
+  "name": "node-redis",
+  "version": "1.0.0",
+  "description": "node redis",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "daniel jara pezzuoli",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "connect-redis": "^4.0.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "path": "^0.12.7",
+    "redis": "^3.0.2"
+  }
+}
