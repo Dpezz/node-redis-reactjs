@@ -4,6 +4,7 @@
   "description": "node redis",
   "main": "index.js",
   "scripts": {
+    "start": "(cd views/ && npm run build) && node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "daniel jara pezzuoli",
