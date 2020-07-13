@@ -1,22 +1,24 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
+import PrivateRoute from "../../services/privateRoute";
+import PublicRoute from "../../services/publicRoute";
 
 import Login from "../auth/Login";
 import Register from "../auth/Register";
 import Home from "../home/Home";
 import Error from "../Error";
 
-function App(context) {
+function App() {
 	return (
 		<Router>
 			<div>
 				<div className="container mt-3">
 					<Switch>
-						<Route path="/" exact component={Login} />
-						<Route path="/login" component={Login} />
-						<Route path="/register" component={Register} />
-						<Route path="/home" component={Home} />
-						<Route path="*" component={Error} />
+						<PublicRoute path="/" exact component={Login} />
+						<PublicRoute path="/login" component={Login} />
+						<PublicRoute path="/register" component={Register} />
+						<PrivateRoute path="/home" component={Home} />
+						<PublicRoute path="*" component={Error} />
 					</Switch>
 				</div>
 			</div>
