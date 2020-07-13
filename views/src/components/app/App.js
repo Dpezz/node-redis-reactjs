@@ -12,15 +12,13 @@ function App() {
 	return (
 		<Router>
 			<div>
-				<div className="container mt-3">
-					<Switch>
-						<PublicRoute path="/" exact component={Login} />
-						<PublicRoute path="/login" component={Login} />
-						<PublicRoute path="/register" component={Register} />
-						<PrivateRoute path="/home" component={Home} />
-						<PublicRoute path="*" component={Error} />
-					</Switch>
-				</div>
+				<Switch>
+					<PublicRoute path="/" exact component={Login} />
+					<PublicRoute path="/login" component={Login} />
+					<PublicRoute path="/register" component={Register} />
+					<PrivateRoute path="/home" component={Home} />
+					<PublicRoute path="*" component={Error} />
+				</Switch>
 			</div>
 		</Router>
 	);
