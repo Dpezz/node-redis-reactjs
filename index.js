@@ -3,11 +3,12 @@ const session = require("express-session");
 const redis = require("redis");
 const redisClient = redis.createClient();
 const redisStore = require("connect-redis")(session);
-const bodyParser = require("body-parser");
-const bcrypt = require("bcrypt");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const path = require("path");
+const bcrypt = require("bcrypt");
 const { default: Axios } = require("axios");
+
 const app = express();
 
 // body parser
@@ -132,5 +133,5 @@ app.get("/*", (req, res) => {
 });
 
 app.listen(8000, () => {
-	console.log("App Started on PORT 8000");
+	console.log("App Started on http://localhost:8000");
 });
