@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import Cookies from "js-cookie";
+import Axios from "axios";
 
 function Login(props) {
 	const [item, setItem] = useState({
@@ -14,8 +14,7 @@ function Login(props) {
 	};
 
 	const handleClick = (event) => {
-		axios
-			.post("http://localhost:8000/api/login", item)
+		Axios.post("http://localhost:8000/api/login", item)
 			.then((res) => {
 				var inOneMinutes = new Date(new Date().getTime() + 2 * 60 * 1000);
 				Cookies.set("_auth", res.data.session, { expires: inOneMinutes });
