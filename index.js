@@ -117,7 +117,7 @@ app.get("/api/characters", auth, (req, res) => {
 		.catch((err) => res.send(err));
 });
 
-app.get("/api/logout", auth, (req, res) => {
+app.delete("/api/logout", auth, (req, res) => {
 	req.session.destroy((err) => {
 		if (err) {
 			res.send(err);
