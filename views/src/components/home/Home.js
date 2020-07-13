@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Axios from "axios";
-import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
+import session from "../../services/session";
+import { removeAuth } from "../../services/auth";
 
 function Home(props) {
 	const [items, setItems] = useState([]);
 
 	useEffect(() => {
+		session(props);
 		fetchItems();
-		timeSession();
-	}, []);
+	}, [props]);
 
 	const fetchItems = () => {
 		Axios.get("http://localhost:8000/api/characters", {
@@ -21,25 +21,21 @@ function Home(props) {
 			.catch((err) => console.error(err));
 	};
 
-	const timeSession = () => {
-		const time = setInterval(() => {
-			const auth = Cookies.get("_auth");
-			if (
-				!auth &&
-				props.location.pathname !== "/" &&
-				props.location.pathname !== "/login" &&
-				props.location.pathname !== "/register"
-			) {
-				props.history.push("/");
-				clearInterval(timeSession);
-			}
-		}, 10000);
+	const handleClick = () => {
+		Axios.delete("http://localhost:8000/api/logout")
+			.then(() => {
+				console.log("start");
+				removeAuth(props);
+			})
+			.catch((err) => console.error(err));
 	};
 
 	return (
 		<div>
 			<h1>Home </h1>
-			<Link to="/logout">logout</Link>
+			<button type="button" onClick={handleClick}>
+				logout
+			</button>
 			<table>
 				<thead>
 					<tr>
@@ -62,7 +58,6 @@ function Home(props) {
 					))}
 				</tbody>
 			</table>
-		
 		</div>
 	);
 }
